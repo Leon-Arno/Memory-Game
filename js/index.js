@@ -45,6 +45,7 @@ const unflipCards = () => {
   }, 1200);
 };
 
+// Resets card  on false selection automatically
 const resetCards = () => {
   [flippedCard, lockCard] = [false, false];
   [firstCard, secondCard] = [null, null];
