@@ -33,7 +33,7 @@ const checkCardMatch = () => {
 const disableCards = () => {
   firstCard.removeEventListener('click', cardFlip);
   secondCard.removeEventListener('click', cardFlip);
-  resetBoard();
+  resetCards();
 };
 
 const unflipCards = () => {
@@ -41,14 +41,22 @@ const unflipCards = () => {
   setTimeout(() => {
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
-    resetBoard();
+    resetCards();
   }, 1200);
 };
 
-const resetBoard = () => {
+const resetCards = () => {
   [flippedCard, lockCard] = [false, false];
   [firstCard, secondCard] = [null, null];
 };
+
+// ! IIFE
+(() => {
+  cards.forEach(card => {
+    let randomPositions = Math.floor(Math.random() * 12);
+    card.style.order = randomPositions;
+  });
+})();
 
 //* Loops through each card to attach eventListener
 cards.forEach(card => card.addEventListener('click', cardFlip));
